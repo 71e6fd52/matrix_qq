@@ -1,0 +1,31 @@
+#!/usr/bin/env ruby
+
+require 'matrix_qq'
+
+session_bus = DBus::SessionBus.instance
+
+matrix_srv = session_bus.service 'org.dastudio.matrix'
+matrix_obj = matrix_srv.object '/org/dastudio/matrix'
+matrix_obj.default_iface = 'org.dastudio.matrix'
+
+matrix_obj.on_signal 'join' do |json|
+  info = JSON.parse json
+  info.each_pair do |room, events|
+    puts "#{room}:"
+    events['timeline']['events'].each do |event|
+      next unless event['type'] == 'm.room.message'
+      content = event['content']
+      name = matrix_obj.get "/profile/#{event['sender']}/displayname", ''
+      name = JSON.parse(name[0])['displayname']
+      if content['msgtype'] == 'm.text'
+        puts "#{name}: #{content['body']}"
+      else
+        puts "#{name}: #{content}"
+      end
+    end
+  end
+end
+
+main = DBus::Main.new
+main << session_bus
+main.run
