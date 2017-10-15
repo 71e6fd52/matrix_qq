@@ -1,35 +1,35 @@
-# MatrixQq
+# matrix_qq ([English](/README.en.md))
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/matrix_qq`. To experiment with that code, run `bin/console` for an interactive prompt.
+[matrix](https://matrix.org) 和 [QQ](https://im.qq.com) 的桥。
 
-TODO: Delete this and the text above, and describe your gem
+## 安装
 
-## Installation
-
-Add this line to your application's Gemfile:
+在你的应用的 `Gemfile` 加入这行：
 
 ```ruby
 gem 'matrix_qq'
 ```
 
-And then execute:
+然后运行：
 
     $ bundle
 
-Or install it yourself as:
+或者你自己安装
 
     $ gem install matrix_qq
 
-## Usage
+## 使用
 
-TODO: Write usage instructions here
+TODO: 写使用说明
 
-## Development
+注意：请确保 `matrix-dbus` 和 `cqhttp-dbus` 正在运行。
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+## 开发
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+检出这个仓库后，运行 `bin/setup` 来安装依赖关系。然后，运行 `rake spec` 来运行测试。 您还可以运行 `bin/console` 启动交互式提示符(`irb`)，让您进行实验。
 
-## Contributing
+要将此 gem 安装到本机上，请运行 `bundle exec rake install`。 要释出新版本，请在 `version.rb` 中更新版本号，然后运行 `bundle exec rake release`，该版本将为该版本创建一个 git 标签，并推送 git 提交和标签，然后将 `.gem` 文件提交到 [rubygems.org](https://rubygems.org)。
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/matrix_qq.
+## 贡献
+
+欢迎来 [GitHub](https://github.com/71e6fd52/matrix_qq) 上发起 issues 和 pull requests
