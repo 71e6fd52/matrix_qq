@@ -18,7 +18,13 @@ matrix_obj.on_signal 'join' do |json|
       name = matrix_obj.get "/profile/#{event['sender']}/displayname", ''
       name = JSON.parse(name[0])['displayname']
       if content['msgtype'] == 'm.text'
-        puts "#{name}: #{content['body']}"
+        message = content['body']
+        m = message.match(/^(\(.*?\))?\[(.*?)\]\s*/)
+        if m
+          name = m[2]
+          message = m.post_match
+        end
+        puts "#{name}: #{message}"
       else
         puts "#{name}: #{content}"
       end
