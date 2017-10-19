@@ -4,13 +4,7 @@ require 'matrix_qq'
 
 session_bus = DBus::SessionBus.instance
 
-matrix_srv = session_bus.service 'org.dastudio.matrix'
-matrix_obj = matrix_srv.object '/org/dastudio/matrix'
-matrix_obj.default_iface = 'org.dastudio.matrix'
-
-matrix_obj.on_signal 'join' do |json|
-  MatrixQQ::Matrix.log_message matrix_obj, json
-end
+MatrixQQ::Matrix.new session_bus
 
 main = DBus::Main.new
 main << session_bus

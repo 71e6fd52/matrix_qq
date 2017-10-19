@@ -3,4 +3,4 @@ require 'json'
 
 require 'matrix_qq/version'
 
-require 'matrix_qq/matrix'
+require 'matrix_qq/matrix/require'
