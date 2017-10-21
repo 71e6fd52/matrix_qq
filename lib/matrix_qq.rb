@@ -1,5 +1,6 @@
 require 'dbus'
 require 'json'
+require 'securerandom'
 
 require 'matrix_qq/version'
 
