@@ -1,6 +1,5 @@
 module MatrixQQ
   class QQ
-    # QQ D-Bus wrapper
     class DBus
       attr_reader :obj
 

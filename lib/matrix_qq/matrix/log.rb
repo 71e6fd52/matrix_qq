@@ -1,6 +1,6 @@
 module MatrixQQ
   class Matrix
-    # Log message
+    # Log message to stdout
     class Log
       def initialize(dbus, _, info)
         @dbus = dbus

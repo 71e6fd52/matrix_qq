@@ -1,6 +1,6 @@
 module MatrixQQ
   class QQ
-    # send group massage to matrix
+    # send group massage to other
     class ForwardGroup
       class << self
         attr_accessor :send_to

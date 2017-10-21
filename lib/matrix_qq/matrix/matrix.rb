@@ -1,5 +1,4 @@
 module MatrixQQ
-  # TODO
   class Matrix
     SIGN = %i[
       all

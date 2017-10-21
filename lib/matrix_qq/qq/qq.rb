@@ -1,5 +1,4 @@
 module MatrixQQ
-  # TODO
   class QQ
     SIGN = %i[
       message

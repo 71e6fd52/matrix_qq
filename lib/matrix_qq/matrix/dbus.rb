@@ -1,6 +1,5 @@
 module MatrixQQ
   class Matrix
-    # matrix D-Bus wrapper
     class DBus
       attr_reader :obj
 

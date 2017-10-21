@@ -1,6 +1,5 @@
 module MatrixQQ
   class Matrix
-    # send message
     module Send
       def self.raw(dbus, room_id, event_type, body)
         txn_id = SecureRandom.hex(32)
