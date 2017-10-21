@@ -3,7 +3,15 @@ module MatrixQQ
   class QQ
     SIGN = %i[
       message
+      private
+      group
+      get_group_list
       event
+      group_upload
+      group_admin
+      group_decrease
+      group_increase
+      friend_add
       friend_request
       join_request
       invite_request
