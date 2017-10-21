@@ -2,6 +2,31 @@
 
 require 'matrix_qq'
 
+config = File.join(ENV['HOME'], '.config', 'matrix-qq', 'config')
+unless File.size config
+  File.open config do |f|
+    f.puts %(module MatrixQQ
+  Config = {
+    tunnel: {
+      # '#example:matrix.org' => {
+      #   type: 'matrix',
+      #   to: { '123456789' => 'group' }
+      # },
+      # '123456789' => {
+      #   type: 'group',
+      #   to: { '#example:matrix.org' => 'matrix' }
+      # },
+      # '10000' => {
+      #   type: 'friend',
+      #   to: { '!abcdef:matrix.org' => 'matrix' }
+      # }
+    }
+  }
+end)
+  end
+end
+load config
+
 session_bus = DBus::SessionBus.instance
 
 matrix = MatrixQQ::Matrix.new session_bus
