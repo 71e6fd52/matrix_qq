@@ -15,8 +15,9 @@ module MatrixQQ
       end
 
       def method_missing(name, *args)
-        args << '{}' if args.size == 1
-        JSON.parse @obj.send(name, *args).first
+        super if args.size > 2
+        args << {} if args.size == 1
+        JSON.parse @obj.send(name, args[0], args[1].to_json).first
       end
     end
   end
