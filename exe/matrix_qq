@@ -3,8 +3,8 @@
 require 'matrix_qq'
 
 config = File.join(ENV['HOME'], '.config', 'matrix-qq', 'config')
-unless File.size config
-  File.open config do |f|
+unless File.size? config
+  File.open config, 'w' do |f|
     f.puts %(module MatrixQQ
   Config = {
     tunnel: {
