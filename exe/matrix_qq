@@ -5,6 +5,7 @@ require 'matrix_qq'
 session_bus = DBus::SessionBus.instance
 
 MatrixQQ::Matrix.new session_bus
+MatrixQQ::QQ.new session_bus
 
 main = DBus::Main.new
 main << session_bus
