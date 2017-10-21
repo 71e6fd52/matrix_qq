@@ -2,8 +2,8 @@ module MatrixQQ
   class Matrix
     # Log message
     class Log
-      def initialize(obj, info)
-        @obj = obj
+      def initialize(dbus, info)
+        @dbus = dbus
         @info = info
       end
 
@@ -34,12 +34,11 @@ module MatrixQQ
       end
 
       def room(room)
-        JSON.parse @obj.get("/rooms/#{room}/state/m.room.name", '').first
+        @dbus.get "/rooms/#{room}/state/m.room.name"
       end
 
       def user(user)
-        name = JSON.parse @obj.get("/profile/#{user}/displayname", '').first
-        name['displayname']
+        @dbus.get("/profile/#{user}/displayname")['displayname']
       end
 
       def match_bot(message)

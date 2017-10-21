@@ -20,22 +20,20 @@ module MatrixQQ
     end
     SIGN.each { |i| Matrix.send (i.to_s + '='), [] }
 
-    attr_reader :obj, :info
+    attr_reader :dbus, :info
 
     def initialize(dbus)
-      srv = dbus.service 'org.dastudio.matrix'
-      @obj = srv.object '/org/dastudio/matrix'
-      @obj.default_iface = 'org.dastudio.matrix'
+      @dbus = DBus.new dbus
       reg
     end
 
     def reg
       SIGN.each do |i|
-        @obj.on_signal i.to_s do |json|
+        @dbus.obj.on_signal i.to_s do |json|
           parse json
           Matrix.send(i).each do |func|
             puts "Start #{func.name}" if $VERBOSE
-            func.new(@obj, @info).run
+            func.new(@dbus, @info).run
             puts "End #{func.name}" if $VERBOSE
           end
         end
