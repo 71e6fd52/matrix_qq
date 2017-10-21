@@ -2,7 +2,7 @@ module MatrixQQ
   class QQ
     # Log message
     class Log
-      def initialize(dbus, info)
+      def initialize(dbus, _, info)
         @dbus = dbus
         @info = info
       end

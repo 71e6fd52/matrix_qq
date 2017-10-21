@@ -4,8 +4,10 @@ require 'matrix_qq'
 
 session_bus = DBus::SessionBus.instance
 
-MatrixQQ::Matrix.new session_bus
-MatrixQQ::QQ.new session_bus
+matrix = MatrixQQ::Matrix.new session_bus
+qq = MatrixQQ::QQ.new session_bus
+matrix.qq_dbus = qq.dbus
+qq.matrix_dbus = matrix.dbus
 
 main = DBus::Main.new
 main << session_bus

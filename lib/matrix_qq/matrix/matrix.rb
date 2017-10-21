@@ -21,6 +21,7 @@ module MatrixQQ
     SIGN.each { |i| Matrix.send (i.to_s + '='), [] }
 
     attr_reader :dbus, :info
+    attr_accessor :qq_dbus
 
     def initialize(dbus)
       @dbus = DBus.new dbus
@@ -33,7 +34,7 @@ module MatrixQQ
           parse json
           Matrix.send(i).each do |func|
             puts "Start #{func.name}" if $VERBOSE
-            func.new(@dbus, @info).run
+            func.new(@dbus, @qq_dbus, @info).run
             puts "End #{func.name}" if $VERBOSE
           end
         end
