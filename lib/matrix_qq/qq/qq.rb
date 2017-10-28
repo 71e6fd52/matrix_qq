@@ -37,7 +37,7 @@ module MatrixQQ
           parse json
           QQ.send(i).each do |func|
             puts "Start #{func.name}" if $VERBOSE
-            func.new(@dbus, @matrix_dbus, @info).run
+            func.new(@dbus, @matrix_dbus, @info.dup).run
             puts "End #{func.name}" if $VERBOSE
           end
         end
