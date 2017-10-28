@@ -2,7 +2,7 @@
 
 require 'matrix_qq'
 
-config = File.join(ENV['HOME'], '.config', 'matrix-qq', 'config')
+config = File.join(ENV['HOME'], '.config', 'matrix-qq', 'config.rb')
 unless File.size? config
   File.open config, 'w' do |f|
     f.puts %(module MatrixQQ

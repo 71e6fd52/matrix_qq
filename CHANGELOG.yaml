@@ -1,3 +1,7 @@
+# Notice: Incompatible items start with `!`
+0.2.0:
+  Change:
+    - ! config file add `.rb`
 0.1.1:
   Feature:
     qq2matrix:
