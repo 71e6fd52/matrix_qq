@@ -1,6 +1,7 @@
 # Notice: Incompatible items start with `!`
 0.2.1:
   Change:
+    - Start/End with uuid
     - One step json parse
   Fix:
     - Lock ignore list now

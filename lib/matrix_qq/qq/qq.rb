@@ -36,9 +36,10 @@ module MatrixQQ
         @dbus.obj.on_signal i.to_s do |json|
           info = parse json
           QQ.send(i).each do |func|
-            puts "Start #{func.name}" if $VERBOSE
+            uuid = SecureRandom.uuid
+            puts "Start #{func.name} -- #{uuid}" if $VERBOSE
             func.new(@dbus, @matrix_dbus, info.dup).run
-            puts "End #{func.name}" if $VERBOSE
+            puts "End #{func.name} -- #{uuid}" if $VERBOSE
           end
         end
       end
