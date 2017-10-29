@@ -25,4 +25,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'ruby-dbus', '~> 0.14.0'
   spec.add_dependency 'matrix_dbus', '~> 1.0'
   spec.add_dependency 'CQHTTP', '~> 2.2'
+  spec.add_dependency 'concurrent-ruby'
 end

@@ -5,14 +5,17 @@ module MatrixQQ
         attr_accessor :ignore, :ignore_lock
       end
       self.ignore = []
-      self.ignore_lock = Mutex.new
+      self.ignore_lock = Concurrent::ReadWriteLock.new
 
       def self.raw(dbus, room_id, event_type, body)
-        ignore_lock.synchronize do
-          txn_id = SecureRandom.hex(32)
-          puts "send #{body}" if $VERBOSE
-          res = dbus.put "/rooms/#{room_id}/send/#{event_type}/#{txn_id}", body
-          ignore << (res['event_id'])
+        Thread.new do
+          ignore_lock.with_write_lock do
+            txn_id = SecureRandom.hex(32)
+            puts "send #{body}" if $VERBOSE
+            uri = "/rooms/#{room_id}/send/#{event_type}/#{txn_id}"
+            res = dbus.put uri, body
+            ignore << (res['event_id'])
+          end
         end
       end
 

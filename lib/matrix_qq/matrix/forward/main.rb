@@ -42,7 +42,7 @@ module MatrixQQ
       end
 
       def exist(event_id)
-        MatrixQQ::Matrix::Send.ignore_lock.synchronize do
+        MatrixQQ::Matrix::Send.ignore_lock.with_read_lock do
           MatrixQQ::Matrix::Send.ignore.delete(event_id)
         end
       end
