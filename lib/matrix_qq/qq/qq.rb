@@ -34,8 +34,7 @@ module MatrixQQ
     def reg
       SIGN.each do |i|
         @dbus.obj.on_signal i.to_s do |json|
-          parse json
-          info = @info
+          info = parse json
           QQ.send(i).each do |func|
             puts "Start #{func.name}" if $VERBOSE
             func.new(@dbus, @matrix_dbus, info.dup).run
@@ -48,7 +47,7 @@ module MatrixQQ
     private
 
     def parse(json)
-      @info = JSON.parse json
+      JSON.parse json
     end
   end
 end
