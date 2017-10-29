@@ -1,4 +1,7 @@
 # Notice: Incompatible items start with `!`
+0.2.1:
+  Fix:
+    - Lock ignore list now
 0.2.0:
   Change:
     - ! config file add `.rb`
