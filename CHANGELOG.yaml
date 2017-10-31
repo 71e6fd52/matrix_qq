@@ -1,5 +1,9 @@
 # Notice: Incompatible items start with `!`
-0.2.1:
+
+0.3.1:
+  Fix:
+    - require 'matrix/utils'
+0.3.0:
   Feature:
     - Matrix send message will add forword parm
     - CQ code parse
@@ -9,6 +13,11 @@
     - Start/End with uuid
     - One step json parse
     - move log to utils
+  Delete:
+    - lock ignore list
+0.2.1:
+  Feature:
+    - will lock ignore list
 0.2.0:
   Change:
     - ! config file add `.rb`
