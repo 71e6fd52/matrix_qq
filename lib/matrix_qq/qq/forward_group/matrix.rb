@@ -18,14 +18,12 @@ module MatrixQQ
 
         def message(messages)
           messages.inject('') do |obj, msg|
-            obj +
-              case msg['type']
-              when 'text' then msg['data']['text']
-              when 'emoji' then [msg['data']['id'].to_i].pack 'U'
-              when 'face' then "[QQ 表情:#{msg['data']['id']}]"
-              when 'record' then '[语音]'
-              when 'image' then msg['data']['url']
-              end
+            obj + case msg['type']
+                  when 'at' then
+                    "@#{user msg['data']['qq'], @info['group_id']} "
+                  when 'image' then msg['data']['url']
+                  else QQ.cq_call msg
+                  end
           end
         end
 

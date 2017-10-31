@@ -23,6 +23,23 @@ module MatrixQQ
     end
     SIGN.each { |i| QQ.send (i.to_s + '='), [] }
 
+    CQ = {
+      'text'   => ->(msg) { msg['data']['text'] },
+      'face'   => ->(msg) { "[QQ 表情:#{msg['data']['id']}]" },
+      'bface'  => ->(msg) { "[QQ 原创表情:#{msg['data']['id']}]" },
+      'sface'  => ->(msg) { "[QQ 小表情:#{msg['data']['id']}]" },
+      'emoji'  => ->(msg) { [msg['data']['id'].to_i].pack 'U' },
+      'record' => ->(___) { '[语音]' },
+      'image'  => ->(msg) { msg['data']['url'] },
+      'at'     => ->(msg) { "@#{msg['data']['qq']} " },
+      'rps'    => ->(msg) { "[#{%w[石头 剪刀 布][msg['data']['type'] - 1]}]" },
+      'dice'   => ->(msg) { "[掷得 #{msg['data']['type']} 点]" },
+      'shake'  => ->(___) { '[窗口抖动]' },
+      'music'  => ->(msg) { "[音乐 #{msg['data'].to_json}]" },
+      'share'  => ->(msg) { "[分享 #{msg['data'].to_json}]" },
+      'anonymous' => ->(___) { '[匿名消息:]' }
+    }.freeze
+
     attr_reader :dbus, :info
     attr_accessor :matrix_dbus
 
@@ -42,6 +59,14 @@ module MatrixQQ
           end
         end
       end
+    end
+
+    def self.cq_call(msg)
+      m = QQ::CQ[msg['type']]
+      raise "Unknow type #{msg['type']}" if m.nil?
+      m = m.call(msg)
+      return '' if m.nil?
+      m
     end
   end
 end
