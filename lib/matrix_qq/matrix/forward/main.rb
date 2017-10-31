@@ -26,7 +26,7 @@ module MatrixQQ
       def each_event(events, tunnel)
         events.each do |event|
           next unless event['type'] == 'm.room.message'
-          next if exist @info['event_id']
+          next if exist event['content']['forword']
           tunnel[:to].each_pair do |to_room, type|
             call_module(event, to_room, type)
           end
@@ -41,10 +41,9 @@ module MatrixQQ
         end
       end
 
-      def exist(event_id)
-        MatrixQQ::Matrix::Send.ignore_lock.with_read_lock do
-          MatrixQQ::Matrix::Send.ignore.delete(event_id)
-        end
+      def exist(forword)
+        return false if forword.nil?
+        !forword
       end
     end # Forward
 
