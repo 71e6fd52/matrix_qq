@@ -30,21 +30,14 @@ module MatrixQQ
     def reg
       SIGN.each do |i|
         @dbus.obj.on_signal i.to_s do |json|
-          info = parse json
+          info = JSON.parse json
           Matrix.send(i).each do |func|
-            uuid = SecureRandom.uuid
-            puts "Start #{func.name} -- #{uuid}" if $VERBOSE
-            func.new(@dbus, @qq_dbus, info.dup).run
-            puts "End #{func.name} -- #{uuid}" if $VERBOSE
+            MatrixQQ.log(func.name) do
+              func.new(@dbus, @qq_dbus, info.dup).run
+            end
           end
         end
       end
-    end
-
-    private
-
-    def parse(json)
-      JSON.parse json
     end
   end
 end

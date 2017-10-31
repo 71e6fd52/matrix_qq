@@ -2,9 +2,12 @@
 0.2.1:
   Feature:
     - Matrix send message will add forword parm
+    - utils:
+      log
   Change:
     - Start/End with uuid
     - One step json parse
+    - move log to utils
 0.2.0:
   Change:
     - ! config file add `.rb`
