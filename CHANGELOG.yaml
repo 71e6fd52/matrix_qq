@@ -1,5 +1,8 @@
 # Notice: Incompatible items start with `!`
 
+0.3.3:
+  Feature:
+    - msgtype rich
 0.3.2:
   Feature:
     - Emoji support

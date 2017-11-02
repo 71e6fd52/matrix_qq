@@ -37,6 +37,7 @@ module MatrixQQ
       'shake'  => ->(___) { '[窗口抖动]' },
       'music'  => ->(msg) { "[音乐 #{msg['data'].to_json}]" },
       'share'  => ->(msg) { "[分享 #{msg['data'].to_json}]" },
+      'rich'   => ->(___) { '' },
       'anonymous' => ->(___) { '[匿名消息:]' }
     }.freeze
 
