@@ -19,9 +19,8 @@ module MatrixQQ
         def message(messages)
           messages.inject('') do |obj, msg|
             obj + case msg['type']
-                  when 'at' then
+                  when 'at'
                     "@#{user msg['data']['qq'], @info['group_id']} "
-                  when 'image' then msg['data']['url']
                   else QQ.cq_call msg
                   end
           end
@@ -35,6 +34,23 @@ module MatrixQQ
           info = info['data']
           name = info['card']
           name == '' ? info['nickname'] : name
+        end
+
+        def matrix_send_image(uri)
+          mxc = @matrix.upload_file uri
+          w, h = FastImage.size uri
+          open(uri) do |f|
+            gen_image_json(f.content_type, uri, mxc, w, h, f.size)
+          end
+        end
+
+        def gen_image_json(type, uri, w, h, size)
+          {
+            body: type,
+            msgtype: 'm.image',
+            url: uri,
+            info: { w: w, h: h, mimetype: type, size: size }
+          }.to_json
         end
       end # Matrix
 

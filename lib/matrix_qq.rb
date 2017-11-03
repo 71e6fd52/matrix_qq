@@ -2,6 +2,7 @@ require 'dbus'
 require 'json'
 require 'securerandom'
 require 'concurrent'
+require 'open-uri'
 
 require 'matrix_qq/version'
 
