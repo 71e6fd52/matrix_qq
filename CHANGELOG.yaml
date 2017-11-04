@@ -6,6 +6,7 @@ master:
     - matrix forword support all
     - all matrix can formord to group
     - group forword support all
+    - all group can formord to matrix
     - utils:
       - intercept?
   Change:

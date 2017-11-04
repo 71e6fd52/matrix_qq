@@ -1,7 +1,6 @@
 module MatrixQQ
   class QQ
     class ForwardGroup
-      # send to matrix
       class Matrix
         def initialize(dbus, matrix, info, room)
           @dbus = dbus
@@ -13,7 +12,10 @@ module MatrixQQ
         def run
           msg = message @info['message']
           sender = user @info['user_id'], @info['group_id']
-          MatrixQQ::Matrix::Send.text @matrix, @room, "[#{sender}] #{msg}"
+          room = "{#{@info['group_id']}}" if @info['print_room']
+          MatrixQQ::Matrix::Send.text \
+            @matrix, @room,
+            "#{room}[#{sender}] #{msg}"
         end
 
         def message(messages)
