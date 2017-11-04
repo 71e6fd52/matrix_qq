@@ -20,6 +20,10 @@ unless File.size? config
       #   type: 'friend',
       #   to: { '!abcdef:matrix.org' => 'matrix' }
       # }
+      # 'friend' => {
+      #   type: 'all',
+      #   to: { '#friend:matrix.org' => 'matrix' }
+      # }
     }
   }
 end)
