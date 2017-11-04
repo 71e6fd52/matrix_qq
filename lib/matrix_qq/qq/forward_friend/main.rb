@@ -1,7 +1,6 @@
 module MatrixQQ
   class QQ
-    # send group massage to other
-    class Forward
+    class ForwordFriend
       class << self
         attr_accessor :send_to
       end
@@ -15,8 +14,8 @@ module MatrixQQ
 
       def run
         return unless @info.is_a? Hash
-        all = run_exact
-        run_all if all
+        return if run_exact
+        run_all
       end
 
       def run_exact
@@ -46,8 +45,8 @@ module MatrixQQ
           puts "End #{func.name}" if $VERBOSE
         end
       end
-    end # Forward
+    end # ForwordFriend
 
-    QQ.private << ForwardGroup
+    QQ.private << ForwordFriend
   end
 end
