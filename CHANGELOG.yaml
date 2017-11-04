@@ -7,6 +7,7 @@ master:
     - friend forword
     - group forword
     - intercept logic
+    - name
 0.4.0:
   Feature:
     - msgtype rich

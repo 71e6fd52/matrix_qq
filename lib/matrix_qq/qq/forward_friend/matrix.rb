@@ -1,6 +1,6 @@
 module MatrixQQ
   class QQ
-    class ForwardGroup
+    class ForwordFriend
       class Matrix
         def initialize(dbus, matrix, info, room)
           @dbus = dbus
@@ -28,7 +28,7 @@ module MatrixQQ
         end
       end # Matrix
 
-      ForwardGroup.send_to['matrix'] << Matrix
-    end # ForwardGroup
+      ForwordFriend.send_to['matrix'] << Matrix
+    end # ForwordFriend
   end # QQ
 end
