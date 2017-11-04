@@ -2,7 +2,7 @@ module MatrixQQ
   class << self
     def intercept?(tunnel)
       i = tunnel[:intercept]
-      return true if i.nil?
+      return false if i.nil?
       return true if i
       false
     end

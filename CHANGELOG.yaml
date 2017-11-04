@@ -1,7 +1,10 @@
 # Notice: Incompatible items start with `!`
 
 master:
+  Feature:
+    - friend to matrix
   Fix:
+    - friend forword
     - group forword
 0.4.0:
   Feature:

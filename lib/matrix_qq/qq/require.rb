@@ -7,3 +7,6 @@ require 'matrix_qq/qq/send'
 
 require 'matrix_qq/qq/forward_group/main'
 require 'matrix_qq/qq/forward_group/matrix'
+
+require 'matrix_qq/qq/forward_friend/main'
+require 'matrix_qq/qq/forward_friend/matrix'
