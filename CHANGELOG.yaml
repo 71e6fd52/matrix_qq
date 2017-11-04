@@ -1,5 +1,8 @@
 # Notice: Incompatible items start with `!`
 
+master:
+  Fix:
+    - hack in symble to string
 0.5.0:
   Feature:
     - friend to matrix

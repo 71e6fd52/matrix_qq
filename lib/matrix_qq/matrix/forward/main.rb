@@ -1,6 +1,5 @@
 module MatrixQQ
   class Matrix
-    # send matrix massage to other
     class Forward
       class << self
         attr_accessor :send_to
@@ -36,8 +35,8 @@ module MatrixQQ
         each_event \
           value['timeline']['events'],
           tunnel,
-          print_room: true,
-          send_room: room
+          'print_room' => true,
+          'send_room' => room
       end
 
       def each_event(events, tunnel, hackin = {})

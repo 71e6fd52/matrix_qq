@@ -33,7 +33,7 @@ module MatrixQQ
         return if tunnel.nil?
         return unless tunnel[:type] == 'all'
         tunnel[:to].each_pair do |room, type|
-          call_module room, type, print_sender: true
+          call_module room, type, 'print_sender' => true
         end
       end
 
