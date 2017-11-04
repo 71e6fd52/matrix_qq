@@ -3,6 +3,7 @@
 0.3.3:
   Feature:
     - msgtype rich
+    - matrix forword support all
   Change:
     - merge text if haven't emoji
 0.3.2:

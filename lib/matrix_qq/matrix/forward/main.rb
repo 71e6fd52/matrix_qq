@@ -16,17 +16,37 @@ module MatrixQQ
       def run
         return unless @info.is_a? Hash
         @info.each_pair do |room, value|
-          tunnel = Config[:tunnel][room]
-          next if tunnel.nil?
-          next unless tunnel[:type] == 'matrix'
-          each_event value['timeline']['events'], tunnel
+          all = run_exact room, value
+          run_all room, value if all
         end
       end
 
-      def each_event(events, tunnel)
+      def run_exact(room, value)
+        tunnel = Config[:tunnel][room]
+        return false if tunnel.nil?
+        return false unless tunnel[:type] == 'matrix'
+        each_event value['timeline']['events'], tunnel
+        intercept = tunnel[:intercept]
+        return true if intercept.nil?
+        intercept
+      end
+
+      def run_all(room, value)
+        tunnel = Config[:tunnel]['matrix']
+        return false if tunnel.nil?
+        return false unless tunnel[:type] == 'all'
+        each_event \
+          value['timeline']['events'],
+          tunnel,
+          print_room: true,
+          send_room: room
+      end
+
+      def each_event(events, tunnel, hackin = {})
         events.each do |event|
           next unless event['type'] == 'm.room.message'
           next if exist event['content']['forword']
+          event.merge!(hackin)
           tunnel[:to].each_pair do |to_room, type|
             call_module(event, to_room, type)
           end
