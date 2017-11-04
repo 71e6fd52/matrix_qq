@@ -6,6 +6,7 @@ master:
   Fix:
     - friend forword
     - group forword
+    - intercept logic
 0.4.0:
   Feature:
     - msgtype rich
