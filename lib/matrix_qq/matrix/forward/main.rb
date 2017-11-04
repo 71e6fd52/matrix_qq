@@ -31,8 +31,8 @@ module MatrixQQ
 
       def run_all(room, value)
         tunnel = Config[:tunnel]['matrix']
-        return false if tunnel.nil?
-        return false unless tunnel[:type] == 'all'
+        return if tunnel.nil?
+        return unless tunnel[:type] == 'all'
         each_event \
           value['timeline']['events'],
           tunnel,
