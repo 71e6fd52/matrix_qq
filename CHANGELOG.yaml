@@ -3,6 +3,8 @@
 master:
   Feature:
     - friend to matrix
+  Fix:
+    - friend forword
 0.4.0:
   Feature:
     - msgtype rich
