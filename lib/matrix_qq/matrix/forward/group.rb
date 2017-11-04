@@ -50,6 +50,7 @@ module MatrixQQ
         end
 
         def emoji(msg)
+          return { type: 'text', data: { text: msg } } if (msg & Emoji).empty?
           msg.each_codepoint.inject([]) do |obj, code|
             obj <<
               if Emoji.include? code
