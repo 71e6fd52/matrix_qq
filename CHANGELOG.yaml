@@ -1,6 +1,6 @@
 # Notice: Incompatible items start with `!`
 
-master:
+0.4.0:
   Feature:
     - msgtype rich
     - matrix forword support all
