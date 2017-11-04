@@ -1,10 +1,11 @@
 # Notice: Incompatible items start with `!`
 
-0.3.3:
+master:
   Feature:
     - msgtype rich
     - matrix forword support all
     - all matrix can formord to group
+    - group forword support all
     - utils:
       - intercept?
   Change:
