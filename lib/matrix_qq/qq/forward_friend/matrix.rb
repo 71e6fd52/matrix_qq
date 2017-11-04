@@ -12,9 +12,7 @@ module MatrixQQ
         def run
           msg = message @info['message']
           sender = "[#{user @info['user_id']}] " if @info['print_sender']
-          MatrixQQ::Matrix::Send.text \
-            @matrix, @room,
-            "#{sender}#{msg}"
+          MatrixQQ::Matrix::Send.text @matrix, @room, "#{sender}#{msg}"
         end
 
         def message(messages)
@@ -24,7 +22,7 @@ module MatrixQQ
         end
 
         def user(user)
-          @dbus.get_stranger_info(user_id: user)['nickname']
+          @dbus.get_stranger_info(user_id: user)['data']['nickname']
         end
       end # Matrix
 
