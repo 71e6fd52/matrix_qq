@@ -8,6 +8,7 @@ master:
     - group forword
     - intercept logic
     - name
+    - Friend call Group mudule
 0.4.0:
   Feature:
     - msgtype rich

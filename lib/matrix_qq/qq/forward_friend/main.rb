@@ -39,7 +39,7 @@ module MatrixQQ
 
       def call_module(room, type, hackin = {})
         info = @info.merge hackin
-        ForwardGroup.send_to[type.to_s].each do |func|
+        ForwordFriend.send_to[type.to_s].each do |func|
           puts "Start #{func.name}" if $VERBOSE
           func.new(@dbus, @matrix, info, room).run
           puts "End #{func.name}" if $VERBOSE
