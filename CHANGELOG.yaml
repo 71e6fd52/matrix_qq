@@ -4,6 +4,7 @@
   Feature:
     - msgtype rich
     - matrix forword support all
+    - all matrix can formord to group
   Change:
     - merge text if haven't emoji
 0.3.2:

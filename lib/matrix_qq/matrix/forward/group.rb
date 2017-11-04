@@ -62,23 +62,24 @@ module MatrixQQ
         end
 
         def format_matrix_message(msg, name, type = 'm.text')
-          return "#{name} 发送了一条消息" if msg =~ /^-msg /
+          room = "{#{@info['send_room']}} " if @info['print_room']
+          return "#{room}#{name} 发送了一条消息" if msg =~ /^-msg /
           return '有人发送了一条消息' if msg =~ /^-all /
           return if msg =~ /^- /
 
           info = type.match(/^m\./).post_match
           info ||= 'text'
-          message msg, name, info
+          message msg, name, info, room
         end
 
-        def message(msg, name, type)
+        def message(msg, name, type, room = '')
           case type
           when 'text'
             m = msg.match(/^-name /)
-            m ? m.post_match : "[#{name}] #{msg}"
-          when 'notice' then "[#{name}] notice #{msg}"
-          when 'emote' then "#{name} #{msg}"
-          else "#{name} send a #{info}"
+            m ? m.post_match : "#{room}[#{name}] #{msg}"
+          when 'notice' then "#{room}[#{name}] notice #{msg}"
+          when 'emote' then "#{room}#{name} #{msg}"
+          else "#{room}#{name} send a #{info}"
           end
         end
 
