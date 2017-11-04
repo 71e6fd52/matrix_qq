@@ -15,8 +15,8 @@ module MatrixQQ
 
       def run
         return unless @info.is_a? Hash
-        all = run_exact room, value
-        run_all room, value if all
+        all = run_exact
+        run_all if all
       end
 
       def run_exact

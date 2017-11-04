@@ -1,5 +1,8 @@
 # Notice: Incompatible items start with `!`
 
+master:
+  Fix:
+    - group forword
 0.4.0:
   Feature:
     - msgtype rich
