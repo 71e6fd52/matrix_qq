@@ -26,9 +26,7 @@ module MatrixQQ
         return false if tunnel.nil?
         return false unless tunnel[:type] == 'matrix'
         each_event value['timeline']['events'], tunnel
-        intercept = tunnel[:intercept]
-        return true if intercept.nil?
-        intercept
+        MatrixQQ.intercept? tunnel
       end
 
       def run_all(room, value)

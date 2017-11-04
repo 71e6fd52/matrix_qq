@@ -5,6 +5,8 @@
     - msgtype rich
     - matrix forword support all
     - all matrix can formord to group
+    - utils:
+      - intercept?
   Change:
     - merge text if haven't emoji
 0.3.2:
@@ -18,7 +20,7 @@
     - Matrix send message will add forword parm
     - CQ code parse
     - utils:
-      log
+      - log
   Change:
     - Start/End with uuid
     - One step json parse
