@@ -1,6 +1,6 @@
 module MatrixQQ
   class QQ
-    class ForwordFriend
+    class ForwardFriend
       class << self
         attr_accessor :send_to
       end
@@ -39,14 +39,14 @@ module MatrixQQ
 
       def call_module(room, type, hackin = {})
         info = @info.merge hackin
-        ForwordFriend.send_to[type.to_s].each do |func|
+        ForwardFriend.send_to[type.to_s].each do |func|
           puts "Start #{func.name}" if $VERBOSE
           func.new(@dbus, @matrix, info, room).run
           puts "End #{func.name}" if $VERBOSE
         end
       end
-    end # ForwordFriend
+    end # ForwardFriend
 
-    QQ.private << ForwordFriend
+    QQ.private << ForwardFriend
   end
 end

@@ -9,6 +9,7 @@ master:
     - intercept logic
     - name
     - Friend call Group mudule
+    - wrong speel
 0.4.0:
   Feature:
     - msgtype rich
