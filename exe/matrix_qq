@@ -18,6 +18,7 @@ unless File.size? config
       # },
       # '10000' => {
       #   type: 'friend',
+      #   intercept: false,
       #   to: { '!abcdef:matrix.org' => 'matrix' }
       # }
       # 'friend' => {
