@@ -28,7 +28,6 @@ module MatrixQQ
       'face'   => ->(msg) { "[QQ 表情:#{msg['data']['id']}]" },
       'bface'  => ->(msg) { "[QQ 原创表情:#{msg['data']['id']}]" },
       'sface'  => ->(msg) { "[QQ 小表情:#{msg['data']['id']}]" },
-      'emoji'  => ->(msg) { [msg['data']['id'].to_i].pack 'U' },
       'record' => ->(___) { '[语音]' },
       'image'  => ->(msg) { msg['data']['url'] },
       'at'     => ->(msg) { "@#{msg['data']['qq']} " },
