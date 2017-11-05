@@ -1,5 +1,8 @@
 # Notice: Incompatible items start with `!`
 
+master:
+  Fix:
+    - example config
 0.5.2:
   Fix:
     - forgot data

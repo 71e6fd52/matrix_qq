@@ -20,13 +20,13 @@ unless File.size? config
       #   type: 'friend',
       #   intercept: false,
       #   to: { '!abcdef:matrix.org' => 'matrix' }
-      # }
+      # },
       # 'friend' => {
       #   type: 'all',
       #   to: { '#friend:matrix.org' => 'matrix' }
       # }
     }
-  }
+  }.freeze
 end)
   end
 end
