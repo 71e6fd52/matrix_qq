@@ -1,6 +1,6 @@
 # Notice: Incompatible items start with `!`
 
-master:
+0.5.3:
   Fix:
     - example config
 0.5.2:
