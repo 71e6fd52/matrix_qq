@@ -1,6 +1,9 @@
 # Notice: Incompatible items start with `!`
 
 master:
+  Feature:
+    - agree friend add request
+    - agree group invite request
   Change:
     - delete emoji code because cqhttp v3.0.1
 0.5.3:
