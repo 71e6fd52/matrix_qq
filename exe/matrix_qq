@@ -32,13 +32,23 @@ end)
 end
 load config
 
+LOG =
+  if ARGV.include? '-q'
+    open '/dev/null', 'w'
+  else
+    STDOUT
+  end
+
 session_bus = DBus::SessionBus.instance
 
 matrix = MatrixQQ::Matrix.new session_bus
+LOG.puts 'Matrix inited'
 qq = MatrixQQ::QQ.new session_bus
+LOG.puts 'QQ inited'
 matrix.qq_dbus = qq.dbus
 qq.matrix_dbus = matrix.dbus
 
 main = DBus::Main.new
 main << session_bus
+LOG.puts 'Started'
 main.run

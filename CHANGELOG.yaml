@@ -4,6 +4,7 @@ master:
   Feature:
     - agree friend add request
     - agree group invite request
+    - add log
   Change:
     - delete emoji code because cqhttp v3.0.1
 0.5.3:
