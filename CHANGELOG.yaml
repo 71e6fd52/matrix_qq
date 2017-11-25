@@ -1,6 +1,10 @@
 # Notice: Incompatible items start with `!`
 
 master:
+  Feature:
+    - hack
+  Change:
+    - user name by hack
 0.5.4:
   Feature:
     - agree friend add request

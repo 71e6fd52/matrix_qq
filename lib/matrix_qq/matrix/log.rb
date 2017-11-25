@@ -13,20 +13,14 @@ module MatrixQQ
           log_room room
           events['timeline']['events'].each do |event|
             next unless event['type'] == 'm.room.message'
-            log_message event['sender'], event['content']
+            log_message event['sender_name'], event['content']
           end
         end
       end
 
       def log_message(sender, content)
-        name = user sender
-        if content['msgtype'] == 'm.text'
-          message = content['body']
-          name, message = user_bot message if user_bot? message
-        else
-          message = content
-        end
-        puts "#{name}: #{message}"
+        message = content['msgtype'] == 'm.text' ? content['body'] : content
+        puts "#{sender}: #{message}"
       end
 
       def log_room(room)
@@ -35,26 +29,6 @@ module MatrixQQ
 
       def room(room)
         @dbus.get "/rooms/#{room}/state/m.room.name"
-      end
-
-      def user(user)
-        @dbus.get("/profile/#{user}/displayname")['displayname']
-      end
-
-      def match_bot(message)
-        message.match(/^(\(.*?\))?\[(.*?)\]\s*/)
-      end
-
-      def user_bot?(message)
-        m = match_bot message
-        return true if m
-        false
-      end
-
-      def user_bot(message)
-        m = match_bot message
-        return unless m
-        [m[2], m.post_match]
       end
     end # Log
 

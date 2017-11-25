@@ -30,7 +30,7 @@ module MatrixQQ
     def reg
       SIGN.each do |i|
         @dbus.obj.on_signal i.to_s do |json|
-          info = JSON.parse json
+          info = hack i, JSON.parse(json)
           Matrix.send(i).each do |func|
             MatrixQQ.log(func.name) do
               func.new(@dbus, @qq_dbus, info.dup).run
@@ -38,6 +38,11 @@ module MatrixQQ
           end
         end
       end
+    end
+
+    def hack(i, info)
+      Hack.list.each { |h| info = h.call(@dbus, info, i) }
+      info
     end
   end
 end

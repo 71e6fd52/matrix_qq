@@ -14,8 +14,7 @@ module MatrixQQ
           msg = @info['content']
           body = msg['body']
           type = msg['msgtype']
-          sender = user @info['sender']
-          sender, body = user_bot body if user_bot? body
+          sender = @info['sender_name']
           message = format_matrix_message(body, sender, type)
           MatrixQQ::QQ::SendGroup.text @matrix, @room, message
         end
@@ -38,28 +37,8 @@ module MatrixQQ
             m ? m.post_match : "#{room}[#{name}] #{msg}"
           when 'notice' then "#{room}[#{name}] notice #{msg}"
           when 'emote' then "#{room}#{name} #{msg}"
-          else "#{room}#{name} send a #{info}"
+          else "#{room}#{name} send a #{type}"
           end
-        end
-
-        def user(user)
-          @dbus.get("/profile/#{user}/displayname")['displayname']
-        end
-
-        def match_bot(message)
-          message.match(/^(\(.*?\))?\[(.*?)\]\s*/)
-        end
-
-        def user_bot?(message)
-          m = match_bot message
-          return true if m
-          false
-        end
-
-        def user_bot(message)
-          m = match_bot message
-          return unless m
-          [m[2], m.post_match]
         end
       end # Matrix
 
