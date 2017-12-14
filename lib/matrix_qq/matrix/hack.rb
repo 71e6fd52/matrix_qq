@@ -33,6 +33,7 @@ module MatrixQQ
         info.each_value.map do |events|
           events['timeline']['events'].map do |e|
             body = e['content']['body']
+            next if body.nil?
             sender = Hack.user dbus, e['sender']
             sender, body = Hack.user_bot body if Hack.user_bot? body
             e['sender_name'] = sender
